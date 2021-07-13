@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -9,12 +11,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
-      password: 'postgres',
+      username: 'khan',
+      password: 'khan',
       database: 'task-management',
       autoLoadEntities: true,
       synchronize: true,
     }),
+    AuthModule,
   ],
+  providers: [],
 })
 export class AppModule {}
